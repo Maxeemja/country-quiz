@@ -1,8 +1,8 @@
 import QuizItems from '../quizItems/quizItems';
 import QuizResults from '../quizResults/quizResults';
-import pic from '../../assets/undraw_adventure_4hum 1.svg'
+import pic from '../../assets/adventure.svg'
 import './quizBlock.scss';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 const QuizBlock = () => {
 
     const [viewResults, setViewResults] = useState(false);

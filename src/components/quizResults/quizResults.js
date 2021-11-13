@@ -1,4 +1,4 @@
-import win from '../../assets/undraw_winners_ao2o 2.svg'
+import win from '../../assets/winners.svg'
 import './quizResults.scss';
 
 const QuizResults = ({counter, rebootQuiz}) => {
