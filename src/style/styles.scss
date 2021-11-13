@@ -5,13 +5,13 @@
 body {
     margin: 0;
     padding: 0;
-    background: url('../assets/background.png') center no-repeat;
+    background: url('../assets/background.png') center center no-repeat;
     font-family: 'Poppins', sans-serif;
 }
 .app {
     width: 740px;
     margin: 0 auto;
-    margin-top: 180px;
+    margin-top: 160px;
     display: flex;
     justify-content: center;
 }

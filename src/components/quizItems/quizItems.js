@@ -1,31 +1,33 @@
 import { useState, useEffect} from 'react';
-import Spinner from '../spinner/Spinner';
 import { useCountryService } from '../../services/service';
+import Spinner from '../spinner/Spinner';
+import { useHttp } from '../../hooks/http.hook';
 import './quizItems.scss';
-const QuizItems = () => {
+const QuizItems = ({goForResults, setCounter, setStatus }) => {
     const {getRandomCountry} = useCountryService();
+    const {process, setProcess} = useHttp();
     const typesOfQuestions = ['capital', 'flag']
     const [correctCountry, setCorrectCountry] = useState({});
     const [typeOfQuestion, setTypeOfQuestion] = useState('capital')
     const [answers, setAnswers] = useState([]);
-    const [status, setStatus] = useState('loading');
     const [checking, setChecking] = useState(false);
-    const [counter, setCounter] = useState(0);
+    const [wrongAnswerFixed, setWrongAnswerFixed] = useState(false);
 
 
     const updQuestion = () => {
         setTypeOfQuestion(typesOfQuestions[Math.floor(Math.random() * 2)]);
-        setStatus('loading')
+        setProcess('loading')
         getRandomCountry()
             .then(data => {
                 setCorrectCountry(data[0])
                 setAnswers(data.sort(() => Math.random() - 0.5))})
-            .then(() => setStatus('idle')) 
+            .then(() => setProcess('idle')) 
     }
     useEffect(() => {
         updQuestion()  
             //eslint-disable-next-line
     }, [])
+
 
     const checkAnswer = (e) => {
         e.preventDefault();
@@ -34,6 +36,7 @@ const QuizItems = () => {
         const siblings = [...document.querySelectorAll('.answer')];
         
         if (answer === correctCountry.name){
+            setCounter(counter => counter + 1)
             e.target.classList.add(`answer-success`)
             const icoTick = e.target.querySelector('i');
             icoTick.classList = `far fa-check-circle`;
@@ -44,16 +47,16 @@ const QuizItems = () => {
             const rightAnswer = siblings.filter(e => e.textContent.slice(1) === correctCountry.name)[0];
             rightAnswer.classList = `answer answer-success`;
             rightAnswer.querySelector('i').classList = `far fa-check-circle`;
+            setWrongAnswerFixed(true);
         }
         siblings.forEach(e => e.style.pointerEvents = `none`)
     }
-    
     
     const nextQuestion = () => {
         setChecking(false);
         updQuestion();
     }
-    
+
     const renderItems = () => {
         const items = [...answers].map((el, i) => 
             <li 
@@ -67,8 +70,8 @@ const QuizItems = () => {
         return items;
     }
     
-    if (status === 'loading') return <Spinner/>;
-    else if (status === 'error') return <div>Error! Smth happened</div>
+    if(process === 'loading') return <Spinner/>;
+    else if(process === 'error') return <div style={{'justifyContent': 'center'}}>Error!!!</div>
     return (
         <>
             <div className="quiz__block-content-question">
@@ -77,7 +80,8 @@ const QuizItems = () => {
             <div  className="quiz__block-content-answers">
                 {renderItems()}
             </div>
-            {checking ? <button onClick={nextQuestion} className="next-btn">Next</button> : null}
+            {checking && !wrongAnswerFixed ? <button onClick={nextQuestion} className="next-btn">Next</button> 
+            : checking && wrongAnswerFixed ? <button onClick={() => goForResults(true)} className="next-btn">See Results</button> : null }
         </>
     )
 }
