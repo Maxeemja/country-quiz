@@ -32,7 +32,7 @@
 - JS/React
 
 ## Features
-- A little quiz which can test your knowledge of capitals and flags.
+- A little quiz which can test your knowledge about countries capitals and flags .
 
 
 
