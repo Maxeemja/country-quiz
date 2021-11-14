@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/country-quiz/static/css/main.89fed605.chunk.css",
+    "main.css": "/country-quiz/static/css/main.ac6340a8.chunk.css",
     "main.js": "/country-quiz/static/js/main.65a12773.chunk.js",
     "main.js.map": "/country-quiz/static/js/main.65a12773.chunk.js.map",
     "runtime-main.js": "/country-quiz/static/js/runtime-main.234f654d.js",
@@ -8,7 +8,7 @@
     "static/js/2.8d086f51.chunk.js": "/country-quiz/static/js/2.8d086f51.chunk.js",
     "static/js/2.8d086f51.chunk.js.map": "/country-quiz/static/js/2.8d086f51.chunk.js.map",
     "index.html": "/country-quiz/index.html",
-    "static/css/main.89fed605.chunk.css.map": "/country-quiz/static/css/main.89fed605.chunk.css.map",
+    "static/css/main.ac6340a8.chunk.css.map": "/country-quiz/static/css/main.ac6340a8.chunk.css.map",
     "static/js/2.8d086f51.chunk.js.LICENSE.txt": "/country-quiz/static/js/2.8d086f51.chunk.js.LICENSE.txt",
     "static/media/1488.372b42cf.gif": "/country-quiz/static/media/1488.372b42cf.gif",
     "static/media/adventure.182b6171.svg": "/country-quiz/static/media/adventure.182b6171.svg",
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.234f654d.js",
     "static/js/2.8d086f51.chunk.js",
-    "static/css/main.89fed605.chunk.css",
+    "static/css/main.ac6340a8.chunk.css",
     "static/js/main.65a12773.chunk.js"
   ]
 }
